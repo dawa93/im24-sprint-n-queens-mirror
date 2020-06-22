@@ -1,5 +1,5 @@
 describe("ChessboardView", function() {
-  var view;
+  const view;
 
   beforeEach(function() {
     view = new BoardView({ model: new Board({ n: 4 }) });

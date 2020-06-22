@@ -12,8 +12,8 @@
 
 // n이 주어졌을 때 n rooks 문제의 해답 한 개를 반환합니다.
 // 반환 값은 체스 판을 나타내는 2차원 배열입니다.
-window.findNRooksSolution = function(n) {
-  var solution = undefined; // fixme
+window.findNRooksSolution = function (n) {
+  const solution = undefined; // fixme
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
@@ -21,8 +21,8 @@ window.findNRooksSolution = function(n) {
 
 // n이 주어졌을 때 n rooks 문제의 전체 해답 개수를 반환합니다.
 // 반환 값은 정수입니다.
-window.countNRooksSolutions = function(n) {
-  var solutionCount = undefined; // fixme
+window.countNRooksSolutions = function (n) {
+  let solutionCount = undefined; // fixme
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
@@ -30,20 +30,20 @@ window.countNRooksSolutions = function(n) {
 
 // n이 주어졌을 때 n queens 문제의 해답 한 개를 반환합니다.
 // 반환 값은 체스 판을 나타내는 2차원 배열입니다.
-window.findNQueensSolution = function(n) {
-  var solution = undefined; // fixme
+window.findNQueensSolution = function (n) {
+  const solution = undefined; // fixme
 
   console.log(
     'Single solution for ' + n + ' queens:',
-    JSON.stringify(solution),
+    JSON.stringify(solution)
   );
   return solution;
 };
 
 // n이 주어졌을 때 n queens 문제의 전체 해답 개수를 반환합니다.
 // 반환 값은 정수입니다.
-window.countNQueensSolutions = function(n) {
-  var solutionCount = undefined; // fixme
+window.countNQueensSolutions = function (n) {
+  let solutionCount = undefined; // fixme
 
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
