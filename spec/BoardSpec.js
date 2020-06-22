@@ -7,7 +7,7 @@ describe('Board', function () {
     // The Board() constructor will accept a matrix and build that into a (Backbone) Board object (as defined in Board.js)
     const board = new Board(matrix);
     _.map(
-      'row col rooks majorDiagonal minorDiagonal queens'.split(' '),
+      'row col rooks slash backSlash queens'.split(' '),
       function (conflictType) {
         const conflictDetected = board[
           'hasAny' + capitalize(conflictType) + 'Conflicts'
