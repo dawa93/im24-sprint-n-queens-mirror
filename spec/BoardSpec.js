@@ -6,20 +6,19 @@ describe('Board', function () {
   const verifyConflictTypes = function (expectedConflicts, matrix) {
     // The Board() constructor will accept a matrix and build that into a (Backbone) Board object (as defined in Board.js)
     const board = new Board(matrix);
-    _.map(
-      'row col rooks slash backSlash queens'.split(' '),
-      function (conflictType) {
-        const conflictDetected = board[
-          'hasAny' + capitalize(conflictType) + 'Conflicts'
-        ]();
-        const conflictExpected = _(expectedConflicts).contains(conflictType);
-        const message = conflictExpected ? 'should' : 'should not';
+    _.map('row col rooks slash backSlash queens'.split(' '), function (
+      conflictType
+    ) {
+      const conflictDetected = board[
+        'hasAny' + capitalize(conflictType) + 'Conflicts'
+      ]();
+      const conflictExpected = _(expectedConflicts).contains(conflictType);
+      const message = conflictExpected ? 'should' : 'should not';
 
-        it(message + ' find a ' + conflictType + ' conflict', function () {
-          expect(conflictDetected).to.be.equal(conflictExpected);
-        });
-      }
-    );
+      it(message + ' find a ' + conflictType + ' conflict', function () {
+        expect(conflictDetected).to.be.equal(conflictExpected);
+      });
+    });
   };
 
   describe('Empty board', function () {
