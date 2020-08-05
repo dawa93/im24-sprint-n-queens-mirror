@@ -1,11 +1,11 @@
-describe("ChessboardView", function() {
-  var view;
+describe('ChessboardView', function () {
+  let view;
 
-  beforeEach(function() {
+  beforeEach(function () {
     view = new BoardView({ model: new Board({ n: 4 }) });
   });
 
-  it("should exist", function() {
+  it('should exist', function () {
     expect(view).to.be.ok;
   });
 });
