@@ -64,6 +64,9 @@
       }, this);
     },
 
+    // comments......
+    // v z
+
     // 특정 좌표에 말이 없으면 올리고, 이미 있으면 내립니다.
     togglePiece: function (rowIndex, colIndex) {
       this.get(rowIndex)[colIndex] = +!this.get(rowIndex)[colIndex];
@@ -156,11 +159,22 @@
     //
     // 주어진 행(rowIndex)에 충돌하는 말이 있는지 확인합니다.
     hasRowConflictAt: function (rowIndex) {
-      return false; // fixme
+      return this.get(rowIndex).reduce((acc, curr) => acc + curr) > 1;
     },
+
+    // - **hasRowConflictAt(rowIndex)** → 인자로 전달받은 row에 conflict가 발생하는지 체크
+    // - 해당 row에 1이 2개 이상 있으면 return true
+    // for Loop으로 해당 row의 값을 Sum => 2 이상이라면 return true;
+    //     - [0, **1**, **1**, 0]
+    //     - [0, 0, 0, 0]
+    //     - [0, 0, 0, 0]
+    //     - [0, 0, 0, 0]
 
     // 체스 판 위에 행 충돌이 하나라도 있는지 검사합니다.
     hasAnyRowConflicts: function () {
+      for (let row = 0; row < this.get('n'); row++) {
+        if (this.hasRowConflictAt(row)) return true;
+      }
       return false; // fixme
     },
 
@@ -169,12 +183,15 @@
     //
     // 주어진 열(colIndex)에 충돌하는 말이 있는지 확인합니다.
     hasColConflictAt: function (colIndex) {
-      return false; // fixme
+      return this.rows().reduce((acc, curr) => acc + curr[colIndex], 0) > 1;
     },
 
     // 체스 판 위에 열 충돌이 하나라도 있는지 검사합니다.
     hasAnyColConflicts: function () {
-      return false; // fixme
+      for (let column = 0; column < this.get('n'); column++) {
+        if (this.hasColConflictAt(column)) return true;
+      }
+      return false;
     },
 
     // Slash (/) - go from top-right to bottom-left
@@ -182,7 +199,15 @@
     //
     // 주어진 슬래시 대각선(/)에 충돌하는 말이 있는지 확인합니다.
     hasSlashConflictAt: function (SlashColumnIndexAtFirstRow) {
-      return false; // fixme
+      let col = SlashColumnIndexAtFirstRow;
+      let board = this.rows();
+      let count = 0;
+
+      for (let row = 0; row < this.get('n'); row++, col--) {
+        if (board[row][col] === 1) count++;
+      }
+
+      return count > 1 ? true : false; // fixme
     },
 
     // 체스 판 위에 슬래시 대각선(/)에 충돌이 하나라도 있는지 검사합니다.
